@@ -9,7 +9,7 @@
 ### Association
 has_many :messages
 has_many :groups, through: :members
-belongs_to :member
+has_many :members
 
 ## groups table
 |Column|Type|Options|
