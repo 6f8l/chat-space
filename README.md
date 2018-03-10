@@ -3,21 +3,23 @@
 ## users table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
-|email|string|null: false, foreign_key: true|
+|name|string|null: false, index: true|
+|email|string|null: false|
 
 ### Association
 has_many :messages
 has_many :groups, through: :members
+belongs_to :member
 
 ## groups table
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null, false|
+|name|string|null: false|
 
 ### Association
-has_many :users
-has_many :messages, through: :members
+has_many :users, through: :members
+has_many :messages
+has_many :members
 
 ## members table
 
@@ -40,4 +42,4 @@ has_many :messages, through: :members
 
 ### Association
 belongs_to :group
-belongs_to :member
+belongs_to :user
