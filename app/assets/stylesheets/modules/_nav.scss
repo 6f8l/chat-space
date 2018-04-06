@@ -1,0 +1,26 @@
+.nav {
+  float: left;
+  height: 100vh;
+  width: 300px;
+  padding: 0 20 0 20px;
+  background-color: #2f3e51;
+  color: white;
+  .nav__name {
+    font-size: 16px;
+    font-style: bold;
+    padding: 35px 20px;
+    background-color: #253141;
+    height: 30px;
+  }
+  .nav__room {
+    padding: 20px;
+    .nav__room__name {
+      font-size: 15px;
+    }
+    .nav__room__comment {
+      padding-top: 5px;
+      font-size: 11px;
+    }
+  }
+
+}
