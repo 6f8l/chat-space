@@ -35,7 +35,7 @@ has_many :members
 ## messages table
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|text|text|null: false|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
