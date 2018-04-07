@@ -4,7 +4,7 @@
   width: 300px;
   background-color: $blue;
   color: white;
-  .nav__name {
+  &__name {
     font-size: 16px;
     font-weight: bold ;
     padding: 35px 20px;
@@ -15,12 +15,12 @@
       padding-left: 10px;
     }
   }
-  .nav__room {
+  &__room {
     padding: 20px;
-    .nav__room__name {
+    &__name {
       font-size: 15px;
     }
-    .nav__room__comment {
+    &__comment {
       padding-top: 5px;
       font-size: 11px;
     }
