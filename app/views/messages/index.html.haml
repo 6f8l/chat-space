@@ -12,15 +12,12 @@
             = fa_icon 'cog', class: 'icon'
 
     .nav__room
-      .nav__room__name
-        %p プログラミング初心者
-      .nav__room__comment
-        %p まだメッセージはありません
-    .nav__room
-      .nav__room__name
-        %p プログラミング初心者
-      .nav__room__comment
-        %p まだメッセージはありません
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          %p.nav__room__name
+            = group.name
+          %p.nav__room__comment
+            メッセージはまだありません。
 
   .chat
     .chat__info

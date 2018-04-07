@@ -3,7 +3,7 @@
   height: 100vh;
   width: 300px;
   background-color: $blue;
-  color: white;
+  color: $white;
   &__name {
     font-size: 16px;
     font-weight: bold ;
@@ -26,10 +26,13 @@
     padding: 20px;
     &__name {
       font-size: 15px;
+      color: $white;
     }
     &__comment {
       padding-top: 5px;
       font-size: 11px;
+      color: $white;
     }
+
   }
 }
