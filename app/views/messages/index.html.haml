@@ -2,8 +2,8 @@
   .nav
     .nav__name
       %span あつき
-      %i.fa.fa-edit
       %i.fa.fa-cog
+      %i.fa.fa-edit
       %span
     .nav__room
       .nav__room__name
@@ -27,14 +27,17 @@
         %a.btn Edit
     .chat__contents
       .chat__contents__content
-        .chat__contents__content__user あつき
-        .chat__contents__content__timestamp 2018/03/11 10:05:22
-        .chat__content__text 勉強頑張りましょう
+        .chat__contents__content-top
+          .chat__contents__content-top__user あつき
+          .chat__contents__content-top__timestamp 2018/03/11 10:05:22
+        .chat__contents__content__text 勉強頑張りましょう
       .chat__contents__content
-        .chat__contents__content__user あつき
-        .chat__contents__content__timestamp 2018/03/11 10:05:22
-        .chat__content__text 勉強頑張りましょう
-    .chat__form
-      .chat__form__textarea
+        .chat__contents__content-top
+          .chat__contents__content-top__user あつき
+          .chat__contents__content-top__timestamp 2018/03/11 10:05:22
+        .chat__contents__content__text 勉強頑張りましょう
+    %form{:action => "/", :method => "post"}
+      %input{:name => "text", :size => "40", :placeholder => "type a message"}
+      %i.fa.fa-image
       .chat__form__btn
         %span Send
