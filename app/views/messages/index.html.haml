@@ -1,10 +1,16 @@
 .container
   .nav
     .nav__name
-      %span あつき
-      %i.fa.fa-cog
-      %i.fa.fa-edit
       %span
+        =current_user.name
+      %ul.nav__name__lists
+        %li.nav__name__lists__list
+          = link_to do
+            = fa_icon 'pencil-square-o', class: 'icon'
+        %li.nav__name__lists__list
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
+
     .nav__room
       .nav__room__name
         %p プログラミング初心者
