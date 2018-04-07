@@ -1,0 +1,120 @@
+.chat {
+  background-color: $white;
+  width: calc(100vw - 300px);
+  height: 100vh;
+  color: $chat-body;
+  float: right;
+  &__info {
+    height: 100px;
+    border-bottom: solid 1px $border;
+    &-left {
+      float: left;
+      padding-left: 40px;
+      &__name {
+        color: $chat-name;
+        font-size: 20px;
+        padding-top: 35px;
+        padding-bottom: 15px;
+      }
+      &__members {
+        color: $light-glay;
+        font-size: 12px;
+      }
+    }
+    &-right {
+      padding-right: 40px;
+      float: right;
+      a.btn {
+        display: block;
+        text-decoration: none;
+        height:40px;
+        line-height: 40px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin: 28px 0px;
+        text-align: center;
+        color: #38AEF0;
+        border:solid 2px $light-blue;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &__contents {
+    padding-left: 40px;
+    padding-top: 26px;
+    padding-right: 40px;
+    &__content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      &-top{
+        @include clearfix();
+        &__user {
+          float: left;
+          padding-right: 10px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__timestamp {
+          float: left;
+          font-size: 12px;
+          color: $light-glay;
+        }
+      }
+      &__text {
+        font-size: 14px;
+        padding-top: 10px;
+      }
+    }
+  }
+
+  form {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 90px;
+    width: calc(100vw - 300px);
+    background-color: #DCDCDC;
+    input {
+      position: absolute;
+      background-color: $white;
+      height: 50px;
+      top: 20px;
+      left: 40px;
+      right: 155px;
+      padding-left: 10px;
+      width: calc(100% - 205px);
+      border: none;
+    }
+    .fa-image{
+      position: absolute;
+      top: 35px;
+      right: 155px;
+      padding-right: 10px;
+    }
+    .chat__form__btn {
+      position: absolute;
+      background-color: $light-blue;
+      height: 50px;
+      width: 100px;
+      top: 20px;
+      right: 40px;
+      float: right;
+      display: block;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+      line-height: 50px;
+      text-align: center;
+      span {
+        color: $white;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+
+// Boldが効かない
+// font awesomeのボタンを横並びにする
+// じゃっかん文字がお手本サイトとずれている
