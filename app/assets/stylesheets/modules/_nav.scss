@@ -10,9 +10,16 @@
     padding: 35px 20px;
     background-color: $dark-blue;
     height: 30px;
-    i{
+    &__lists{
       float: right;
       padding-left: 10px;
+      &__list{
+        float: right;
+        padding-left: 10px;
+        .icon{
+          color: white;
+        }
+      }
     }
   }
   &__room {
