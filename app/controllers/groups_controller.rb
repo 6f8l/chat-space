@@ -7,6 +7,14 @@ class GroupsController < ApplicationController
     @group.users << current_user
   end
 
+  def update
+    if @group.update(group_params)
+      redirect_to group_message_path, notice: 'グループを編集しました'
+    else
+      render :edit
+    end
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
@@ -16,10 +24,12 @@ class GroupsController < ApplicationController
     end
   end
 
-  def
-
   private
   def group_params
     params.require(:group).permit(:name, { :user_ids => [] })
+  end
+
+  def set_groups
+    @group = Group.find(params[:id])
   end
 end
