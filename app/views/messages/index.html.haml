@@ -17,7 +17,7 @@
           %p.nav__room__name
             = group.name
           %p.nav__room__comment
-            =メッセージはまだありません。
+            = group.show_last_message
 
   .chat
     .chat__info
@@ -29,16 +29,13 @@
       .chat__info-right
         %a.btn Edit
     .chat__contents
-      .chat__contents__content
-        .chat__contents__content-top
-          .chat__contents__content-top__user あつき
-          .chat__contents__content-top__timestamp 2018/03/11 10:05:22
-        .chat__contents__content__text 勉強頑張りましょう
-      .chat__contents__content
-        .chat__contents__content-top
-        .chat__contents__content__text 勉強頑張りましょう
-    %form{:action => "/", :method => "post"}
-      %input{:name => "text", :size => "40", :placeholder => "type a message"}
-      %i.fa.fa-image
-      .chat__form__btn
-        %span Send
+      = render @messages
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image do
+            = fa_icon 'picture-o', class: 'fa-image'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'chat__form__btn'

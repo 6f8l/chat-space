@@ -68,14 +68,14 @@
     }
   }
 
-  form {
+  .form {
     position: fixed;
     bottom: 0;
     right: 0;
     height: 90px;
     width: calc(100vw - 300px);
     background-color: #DCDCDC;
-    input {
+    &__message {
       position: absolute;
       background-color: $white;
       height: 50px;
@@ -92,7 +92,7 @@
       right: 155px;
       padding-right: 10px;
     }
-    .chat__form__btn {
+    &__btn {
       position: absolute;
       background-color: $light-blue;
       height: 50px;
@@ -106,10 +106,8 @@
       cursor: pointer;
       line-height: 50px;
       text-align: center;
-      span {
-        color: $white;
-        font-size: 16px;
-      }
+      color: $white;
+      font-size: 16px;
     }
   }
 }
