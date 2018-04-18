@@ -69,7 +69,7 @@
   }
 
   .form {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     height: 90px;
@@ -92,7 +92,10 @@
       right: 155px;
       padding-right: 10px;
     }
-    &__btn {
+    .hidden {
+      display: none;
+    }
+    .btn {
       position: absolute;
       background-color: $light-blue;
       height: 50px;
