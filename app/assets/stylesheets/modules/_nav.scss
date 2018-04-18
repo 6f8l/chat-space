@@ -24,6 +24,9 @@
   }
   &__room {
     color: $white;
+    :hover {
+      background-color: #384a62;
+    }
     &__box {
       padding-top: 20px;
       padding-right: 20px;
