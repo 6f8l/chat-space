@@ -17,7 +17,7 @@
           .nav__room__box
             %p.nav__room__name
               = group.name
-            %p.nav__room__comment
+            %p.nav__room__message
               = group.show_last_message
 
   .chat
@@ -33,7 +33,7 @@
       = render @messages
 
     .form
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message] ,html: { class: 'form-js' } do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         = f.label :image do
           = fa_icon 'picture-o', class: 'fa-image'
