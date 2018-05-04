@@ -17,7 +17,7 @@
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
         = f.text_field :name, class: 'chat-group-form__input', id: 'user-search-field', placeholder: '追加したいユーザー名を入力してください'
-    .user-search-result
+      .user-search-result
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
@@ -30,7 +30,7 @@
         - @group.users.each do |user|
           - if user != current_user
             .chat-group-user.clearfix{ id: "chat-group-user-#{user.id}" }
-              %input{ type: "hidden", name: "group[user_ids][]", value: user.id }
+              %input{ type: "hidden", name: "group[user_id][]", value: user.id }
               %p.chat-group-user__name
                 = user.name
               - if user.id != current_user.id

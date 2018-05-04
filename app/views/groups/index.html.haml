@@ -14,7 +14,8 @@
     .nav__room
       - current_user.groups.each do |group|
         = link_to group_messages_path(group) do
-          %p.nav__room__name
-            = group.name
-          %p.nav__room__comment
-            = group.show_last_message
+          .nav__room__box
+            %p.nav__room__name
+              = group.name
+            %p.nav__room__comment
+              = group.show_last_message

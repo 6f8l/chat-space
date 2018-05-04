@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
 
-  var search_list = $("#chat-group-users");
+  var search_list = $(".user-search-result");
 
   function appendUser(user) {
     var html = `<div class='chat-group-user clearfix' id='chat-group-user-${user.id}'>
@@ -16,6 +16,15 @@ $(document).on('turbolinks:load', function() {
     search_list.appned(html);
   };
 
+  function buildHTML(id, name) {
+    var html = `<div class="chat-group-user clearfix" id=chat-group-user-${id}>
+      <input type="hidden" name="group[user_ids][]" value="${id}">
+      <p class="chat-group-user__name">${name}</p>
+      <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove" data-user-id="${id}">削除</a>
+    </div>`
+    return html
+  }
+
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     console.log(input);
@@ -27,19 +36,33 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
 
-      .done(function(users) {
-        $("#chat-group-users").empty();
-        if (users.length !== 0) {
-          users.forEach(function(user) {
-            appendUser(user);
-          });
-        } else {
-          appendNoUser("一致するユーザーはいません")
-        }
-      })
+    .done(function(users) {
+      $("#chat-group-users").empty();
+      if (users.length !== 0) {
+        users.forEach(function(user) {
+          appendUser(user);
+        });
+      } else {
+        appendNoUser("一致するユーザーはいません")
+      }
+    })
 
-      .fail(function() {
-        alert('ユーザー検索に失敗しました')
-      });
+    .fail(function() {
+      alert('ユーザー検索に失敗しました')
+    });
   });
+
+  $('.user-search-add').on('click', function() {
+    console.log('hoge');
+    var id = $('user-search-add').data('user-id');
+    var name = $('.user-search-add').data('user-name');
+    var insertHTML = buildHTML(id, name);
+    $('#chat-group-users').append(insertHTML);
+    $(this).parent('.chat-group-user').remove();
+  })
+
+  $('#chat-group-users').on('click', '.user-search-remove', function() {
+    var id = $(this).data('id');
+    $(`#chat-group-user-${id}`).remove();
+  })
 });

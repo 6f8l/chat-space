@@ -6,6 +6,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
+  overflow: auto;
 
   h1 {
     letter-spacing: 2px;
@@ -59,6 +60,7 @@
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+      height: 100%;
     }
 
     .chat-group-form__label {
