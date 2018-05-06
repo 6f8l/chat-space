@@ -4,6 +4,7 @@
   width: 300px;
   background-color: $blue;
   color: $white;
+  overflow: scroll;
   &__name {
     font-size: 16px;
     font-weight: bold ;
@@ -37,7 +38,7 @@
         color: $white;
         text-decoration: none;
       }
-      &__message {
+      &__comment {
         padding-top: 5px;
         font-size: 11px;
         color: $white;
