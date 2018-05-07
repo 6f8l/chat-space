@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function() {
       contentType: false,
       processData: false
     })
-
     .done(function(message) {
       console.log('success')
       console.log(message)
