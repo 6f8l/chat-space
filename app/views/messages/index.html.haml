@@ -19,3 +19,23 @@
               = group.name
             %p.nav__room__comment
               = group.show_last_message
+
+  .chat
+    .chat__info
+      .chat__info-left
+        .chat__info-left__name
+          %p プログラミング初心者
+        .chat__info-left__members
+          %p Members: あつき
+      .chat__info-right
+        %a.btn Edit
+    .chat__contents
+      = render @messages
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        = f.label :image do
+          = fa_icon 'picture-o', class: 'fa-image'
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'btn'
