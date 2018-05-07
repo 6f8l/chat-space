@@ -42,4 +42,22 @@ $(document).on('turbolinks:load', function() {
       alert('メッセージを入力してください');
     })
   })
-})
+
+  setInterval(function() {
+    $.ajax({
+      url: location.href
+    })
+    .done(function(data) {
+      var insertHTML = '';
+      json.messages.forEach(function(message){
+        insertHTML += buildHTML(message);
+      });
+      $('.')
+    })
+    .fail(function(data) {
+
+    });
+  } else {
+    clearInterval(interval);
+  }, 5000 );
+});
