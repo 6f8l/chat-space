@@ -57,5 +57,5 @@ $(document).on('turbolinks:load', function() {
   $(document).on('click', '.user-search-remove', function() {
     var id = $(this).data('user-id');
     $(`#chat-group-user-${id}`).remove();
-  })
+  })z
 });
