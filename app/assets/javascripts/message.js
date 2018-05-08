@@ -45,7 +45,7 @@ $(document).on('turbolinks:load', function() {
       alert('メッセージを入力してください');
     })
   })
-
+  if (location.href.match(/\/groups\/\d+\/messages/)) {
   $(function() {
     $(function() {
       setInterval(update, 5000);
@@ -78,4 +78,5 @@ $(document).on('turbolinks:load', function() {
       })
     }
   })
+  }
 });
