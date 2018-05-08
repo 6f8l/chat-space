@@ -5,21 +5,21 @@ $(document).on('turbolinks:load', function() {
       addImage = `<img src="${message.image.url}" class="lower-message__image">`;
     }
     var html = `
-    <div class="chat__contents__content">
-      <div class="chat__contents__content-top">
-        <div class="chat__contents__content-top__user">${message.user_name}</div>
-        <div class="chat__contents__content-top__timestamp">${message.time}</div>
-      </div>
-      <div class="chat__contents__content__text">${message.content}${addImage}</div>
-    </div>`;
+        <div class="chat__contents__content" data-message-id="${message.id}">
+          <div class="chat__contents__content-top" data-message-id="${message.id}">
+            <div class="chat__contents__content-top__user">${message.name}</div>
+            <div class="chat__contents__content-top__timestamp">${message.date}</div>
+          <div class="chat__contents__content__text">
+            <p>${message.content}</p>
+            ${addImage}
+          </div>
+        </div>`;
     return html;
   }
 
-  $('.form-js').on('submit', function(e) {
+  $('.new_message').on('submit', function(e) {
     e.preventDefault();
-
-    var formdata = new FormData($(this).get(0));
-
+    var formdata = new FormData(this);
     $.ajax({
       url: location.href,
       type: 'POST',
@@ -44,38 +44,71 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(function() {
+    // function buildMessage(message){
+    //   var messages = $('.chat__contents').append(html)
+    //   var insertImage = '';
+    //   if (image.url) {
+    //     insertImage = `<img src="${image.url}">`;
+    //   }
+    //   var html = `
+    //     <div class="chat__contents__content" data-message-id="${id}">
+    //       <div class="chat__contents__content-top" data-message-id="${id}">
+    //         <div class="chat__contents__content-top__user">${name}</div>
+    //         <div class="chat__contents__content-top__timestamp">${date}</div>
+    //       <div class="chat__contents__content__text">
+    //         <p>${content}</p>
+    //         ${insertImage}
+    //       </div>
+    //     </div>`;
+    // }
     $(function() {
       setInterval(update, 5000);
     });
-
     function update(){
-      var message_id = $('.chat__contents__content:last').data('id');
+      if($('.chat__contents')[0]){
+        var message_id = $('.chat__contents__content:last').data('message-id');
+      } else {
+        var message_id = 0
+      }
       $.ajax({
         url: location.href,
         type: 'GET',
         data: { message : { id : message_id } },
         dataType: 'json'
       })
-      .always()
+      .done(function(data){
+        console.log(data.length)
+        if (data.length){
+        $.each(data, function(i, data){
+          console.log(data.image)
+          var html = buildHTML(data);
+      $('.chat__contents').append(html)
+          console.log('success')
+        })
+      }
+      })
+      .fail(function(){
+        console.log('fail')
+      })
     }
   })
 
   // setInterval(function() {
   //   function buildHTML(message) {
-  //     var insertImage = '';
-  //     if (message.image.url) {
-  //       insertImage = `<img src="${message.image.url}">`;
-  //     }
-  //     var html = `
-  //       <div class="chat__contents__content" data-message-id="${message.id}">
-  //         <div class="chat__contents__content-top" data-message-id="${message.id}">
-  //           <div class="chat__contents__content-top__user">${message.name}</div>
-  //           <div class="chat__contents__content-top__timestamp">${message.date}</div>
-  //         <div class="chat__contents__content__text">
-  //           <p>${message.content}</p>
-  //           ${insertImage}
-  //         </div>
-  //       </div>`;
+      // var insertImage = '';
+      // if (message.image.url) {
+      //   insertImage = `<img src="${message.image.url}">`;
+      // }
+      // var html = `
+      //   <div class="chat__contents__content" data-message-id="${message.id}">
+      //     <div class="chat__contents__content-top" data-message-id="${message.id}">
+      //       <div class="chat__contents__content-top__user">${message.name}</div>
+      //       <div class="chat__contents__content-top__timestamp">${message.date}</div>
+      //     <div class="chat__contents__content__text">
+      //       <p>${message.content}</p>
+      //       ${insertImage}
+      //     </div>
+      //   </div>`;
   //     return html
   //   }
   //   var interval = setInterval(function() {

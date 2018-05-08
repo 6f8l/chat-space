@@ -46,16 +46,16 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $(document).on('click','.user-search-add', function() {
+  $(".user-search-result").on('click','.user-search-add', function() {
     var id = $(this).data('user-id');
     var name = $(this).data('user-name');
     var insertHTML = buildHTML(id, name);
     $('.chat-group-users').append(insertHTML);
     $(this).parent('.chat-group-user').remove();
-  })
+  });
 
   $(document).on('click', '.user-search-remove', function() {
     var id = $(this).data('user-id');
     $(`#chat-group-user-${id}`).remove();
-  })
+  });
 });
