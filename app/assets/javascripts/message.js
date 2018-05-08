@@ -44,23 +44,6 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(function() {
-    // function buildMessage(message){
-    //   var messages = $('.chat__contents').append(html)
-    //   var insertImage = '';
-    //   if (image.url) {
-    //     insertImage = `<img src="${image.url}">`;
-    //   }
-    //   var html = `
-    //     <div class="chat__contents__content" data-message-id="${id}">
-    //       <div class="chat__contents__content-top" data-message-id="${id}">
-    //         <div class="chat__contents__content-top__user">${name}</div>
-    //         <div class="chat__contents__content-top__timestamp">${date}</div>
-    //       <div class="chat__contents__content__text">
-    //         <p>${content}</p>
-    //         ${insertImage}
-    //       </div>
-    //     </div>`;
-    // }
     $(function() {
       setInterval(update, 5000);
     });
@@ -92,50 +75,4 @@ $(document).on('turbolinks:load', function() {
       })
     }
   })
-
-  // setInterval(function() {
-  //   function buildHTML(message) {
-      // var insertImage = '';
-      // if (message.image.url) {
-      //   insertImage = `<img src="${message.image.url}">`;
-      // }
-      // var html = `
-      //   <div class="chat__contents__content" data-message-id="${message.id}">
-      //     <div class="chat__contents__content-top" data-message-id="${message.id}">
-      //       <div class="chat__contents__content-top__user">${message.name}</div>
-      //       <div class="chat__contents__content-top__timestamp">${message.date}</div>
-      //     <div class="chat__contents__content__text">
-      //       <p>${message.content}</p>
-      //       ${insertImage}
-      //     </div>
-      //   </div>`;
-  //     return html
-  //   }
-  //   var interval = setInterval(function() {
-  //     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-  //       $.ajax({
-  //         url: location.href,
-  //         type: 'GET',
-  //         dataType: 'json'
-  //       })
-  //       .done(function(data) {
-  //         console.log("SUCCESS")
-  //         var id = $('.chat__contents_content').data('messageId')
-  //         console.log(id)
-  //         var insertHTML = '';
-  //         json.messages.forEach(function(message){
-  //           if (message.id > id ) {
-  //             insertHTML += buildHTML(message);
-  //           }
-  //         });
-  //         $('.chat__contents').prepend(insertHTML);
-  //       })
-  //       .fail(function(data) {
-  //         alert('自動更新に失敗しました')
-  //       });
-  //     } else {
-  //       clearInterval(interval);
-  //     }
-  //   }, 5000 );
-  // })
 });
