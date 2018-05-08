@@ -31,7 +31,7 @@
             Members:
             = @users.pluck(:name).join(",")
       .chat__info-right
-        %a.btn(href='/group/#{@group.id}/edit') Edit
+        %a.btn(href='/groups/#{@group.id}/edit') Edit
     .chat__contents
       = render @messages
 
