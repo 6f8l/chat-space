@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function() {
       setInterval(update, 5000);
     });
     function update(){
-      if($('.chat__contents')[0]){
+      if($('.chat__contents__content')[0]){
         var message_id = $('.chat__contents__content:last').data('message-id');
       } else {
         var message_id = 0
