@@ -9,8 +9,11 @@ $(document).on('turbolinks:load', function() {
           <div class="chat__contents__content-top" data-message-id="${message.id}">
             <div class="chat__contents__content-top__user">${message.name}</div>
             <div class="chat__contents__content-top__timestamp">${message.date}</div>
+          </div>
           <div class="chat__contents__content__text">
-            <p>${message.content}</p>
+            <p class="chat__contents__content__text">
+              ${message.content}
+            </p>
             ${addImage}
           </div>
         </div>`;
