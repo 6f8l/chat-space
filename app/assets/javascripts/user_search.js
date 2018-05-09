@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function() {
     $(this).parent('.chat-group-user').remove();
   });
 
-  $(document).on('click', '.user-search-remove', function() {
+  $(".chat-group-users").on('click', '.user-search-remove', function() {
     var id = $(this).data('user-id');
     $(`#chat-group-user-${id}`).remove();
   });

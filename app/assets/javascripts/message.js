@@ -32,8 +32,6 @@ $(document).on('turbolinks:load', function() {
       processData: false
     })
     .done(function(message) {
-      console.log('success')
-      console.log(message)
       var html = buildHTML(message);
       $('.chat__contents').append(html)
       $('.form__message').val('');
@@ -41,42 +39,38 @@ $(document).on('turbolinks:load', function() {
       $('.chat').animate({scrollTop: $('.chat__contents')[0].scrollHeight}, 'fast');
     })
     .fail(function(message) {
-      console.log('error!');
       alert('メッセージを入力してください');
     })
   })
-  if (location.href.match(/\/groups\/\d+\/messages/)) {
   $(function() {
     $(function() {
-      setInterval(update, 5000);
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }
     });
     function update(){
       if($('.chat__contents__content')[0]){
         var message_id = $('.chat__contents__content:last').data('message-id');
       } else {
-        var message_id = 0
+        return false
       }
       $.ajax({
         url: location.href,
         type: 'GET',
-        data: { message : { id : message_id } },
+        data: { id : message_id },
         dataType: 'json'
       })
       .done(function(data){
-        console.log(data.length)
         if (data.length){
         $.each(data, function(i, data){
-          console.log(data.image)
           var html = buildHTML(data);
       $('.chat__contents').append(html)
-          console.log('success')
         })
       }
       })
       .fail(function(){
-        console.log('fail')
+        alert('自動更新に失敗しました')
       })
     }
   })
-  }
 });
