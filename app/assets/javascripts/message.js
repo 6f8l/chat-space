@@ -5,21 +5,24 @@ $(document).on('turbolinks:load', function() {
       addImage = `<img src="${message.image.url}" class="lower-message__image">`;
     }
     var html = `
-    <div class="chat__contents__content">
-      <div class="chat__contents__content-top">
-        <div class="chat__contents__content-top__user">${message.user_name}</div>
-        <div class="chat__contents__content-top__timestamp">${message.time}</div>
-      </div>
-      <div class="chat__contents__content__text">${message.content}${addImage}</div>
-    </div>`;
+        <div class="chat__contents__content" data-message-id="${message.id}">
+          <div class="chat__contents__content-top" data-message-id="${message.id}">
+            <div class="chat__contents__content-top__user">${message.name}</div>
+            <div class="chat__contents__content-top__timestamp">${message.date}</div>
+          </div>
+          <div class="chat__contents__content__text">
+            <p class="chat__contents__content__text">
+              ${message.content}
+            </p>
+            ${addImage}
+          </div>
+        </div>`;
     return html;
   }
 
-  $('.form-js').on('submit', function(e) {
+  $('.new_message').on('submit', function(e) {
     e.preventDefault();
-
-    var formdata = new FormData($(this).get(0));
-
+    var formdata = new FormData(this);
     $.ajax({
       url: location.href,
       type: 'POST',
@@ -29,8 +32,6 @@ $(document).on('turbolinks:load', function() {
       processData: false
     })
     .done(function(message) {
-      console.log('success')
-      console.log(message)
       var html = buildHTML(message);
       $('.chat__contents').append(html)
       $('.form__message').val('');
@@ -38,8 +39,38 @@ $(document).on('turbolinks:load', function() {
       $('.chat').animate({scrollTop: $('.chat__contents')[0].scrollHeight}, 'fast');
     })
     .fail(function(message) {
-      console.log('error!');
       alert('メッセージを入力してください');
     })
   })
-})
+  $(function() {
+    $(function() {
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }
+    });
+    function update(){
+      if($('.chat__contents__content')[0]){
+        var message_id = $('.chat__contents__content:last').data('message-id');
+      } else {
+        return false
+      }
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id : message_id },
+        dataType: 'json'
+      })
+      .done(function(data){
+        if (data.length){
+        $.each(data, function(i, data){
+          var html = buildHTML(data);
+      $('.chat__contents').append(html)
+        })
+      }
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました')
+      })
+    }
+  })
+});
