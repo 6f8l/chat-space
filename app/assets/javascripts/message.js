@@ -37,6 +37,7 @@ $(document).on('turbolinks:load', function() {
       $('.form__message').val('');
       $('.btn').prop('disabled', false);
       $('.chat').animate({scrollTop: $('.chat__contents')[0].scrollHeight}, 'fast');
+      $('.hidden').remove();
     })
     .fail(function(message) {
       alert('メッセージを入力してください');
