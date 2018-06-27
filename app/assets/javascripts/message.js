@@ -43,6 +43,8 @@ $(document).on('turbolinks:load', function() {
       alert('メッセージを入力してください');
     })
   })
+
+  // 自動更新
   $(function() {
     $(function() {
       if (location.pathname.match(/\/groups\/\d+\/messages/)) {
@@ -55,6 +57,7 @@ $(document).on('turbolinks:load', function() {
       } else {
         return false
       }
+
       $.ajax({
         url: location.href,
         type: 'GET',
@@ -65,7 +68,7 @@ $(document).on('turbolinks:load', function() {
         if (data.length){
         $.each(data, function(i, data){
           var html = buildHTML(data);
-      $('.chat__contents').append(html)
+          $('.chat__contents').append(html)
         })
       }
       })

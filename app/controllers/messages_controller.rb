@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+
     @message = @group.messages.new(message_params)
     if @message.save
       respond_to do |format|
@@ -25,7 +26,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
   def message_params
     params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
   end
