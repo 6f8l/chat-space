@@ -3,7 +3,7 @@
     .chat__contents__content-top__user
       = message.user.name
     .chat__contents__content-top__timestamp
-      = message.created_at
+      = message.created_at.strftime('%Y/%m/%d %H:%M:%S')
   .chat__contents__content__text
     - if message.content.present?
       %p.chat__contents__content__text
